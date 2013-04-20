@@ -323,6 +323,7 @@ namespace network {
   }
 
   boost::optional<boost::string_ref> uri::authority() const {
+#if 0 // build erro in xcode.
     auto host = this->host();
     if (!host) {
       return boost::optional<boost::string_ref>();
@@ -340,8 +341,9 @@ namespace network {
     }
 
     return to_string_ref(pimpl_->uri_, boost::iterator_range<uri::iterator>(first, last));
+#endif
+    return boost::optional<boost::string_ref>();
   }
-
   uri::string_type uri::native() const {
     return pimpl_->uri_;
   }
