@@ -7,6 +7,8 @@
 cmake_minimum_required(VERSION 2.8)
 project(Uri)
 
+option( CPP-NETLIB_BUILD_TESTS "Build the unit tests." OFF )
+
 find_package(Threads REQUIRED)
 set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)
@@ -46,14 +48,6 @@ if (WIN32)
 endif(WIN32)
 
 add_subdirectory(src)
-
-if (CMAKE_PROJECT_NAME STREQUAL "Uri" OR CPP-NETLIB_BUILD_TESTS)
-  enable_testing()
-  if (NOT DEFINED GTEST_FOUND)
-    find_package(GTest REQUIRED)
-  endif()
-  add_subdirectory(test)
-endif()
 
 #propagate sources to parent scope for one-lib-build
 set(Uri_SRCS ${Uri_SRCS} PARENT_SCOPE)
