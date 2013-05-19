@@ -16,10 +16,11 @@ if(NOT CPP-NETLIB_BUILD_SINGLE_LIB)
     DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
     )
 
-  install(DIRECTORY network
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/include
-    )
 endif()
 
 #propagate sources to parent scope for one-lib-build
 set(Uri_SRCS ${Uri_SRCS} PARENT_SCOPE)
+
+install(DIRECTORY network
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/include
+)
